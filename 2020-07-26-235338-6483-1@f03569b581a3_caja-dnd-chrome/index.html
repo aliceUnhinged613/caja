@@ -1,0 +1,259 @@
+<html>
+<head>
+<title>rootdir - scan-build results</title>
+<link type="text/css" rel="stylesheet" href="scanview.css"/>
+<script src="sorttable.js"></script>
+<script language='javascript' type="text/javascript">
+function SetDisplay(RowClass, DisplayVal)
+{
+  var Rows = document.getElementsByTagName("tr");
+  for ( var i = 0 ; i < Rows.length; ++i ) {
+    if (Rows[i].className == RowClass) {
+      Rows[i].style.display = DisplayVal;
+    }
+  }
+}
+
+function CopyCheckedStateToCheckButtons(SummaryCheckButton) {
+  var Inputs = document.getElementsByTagName("input");
+  for ( var i = 0 ; i < Inputs.length; ++i ) {
+    if (Inputs[i].type == "checkbox") {
+      if(Inputs[i] != SummaryCheckButton) {
+        Inputs[i].checked = SummaryCheckButton.checked;
+        Inputs[i].onclick();
+      }
+    }
+  }
+}
+
+function returnObjById( id ) {
+    if (document.getElementById)
+        var returnVar = document.getElementById(id);
+    else if (document.all)
+        var returnVar = document.all[id];
+    else if (document.layers)
+        var returnVar = document.layers[id];
+    return returnVar;
+}
+
+var NumUnchecked = 0;
+
+function ToggleDisplay(CheckButton, ClassName) {
+  if (CheckButton.checked) {
+    SetDisplay(ClassName, "");
+    if (--NumUnchecked == 0) {
+      returnObjById("AllBugsCheck").checked = true;
+    }
+  }
+  else {
+    SetDisplay(ClassName, "none");
+    NumUnchecked++;
+    returnObjById("AllBugsCheck").checked = false;
+  }
+}
+</script>
+<!-- SUMMARYENDHEAD -->
+</head>
+<body>
+<h1>rootdir - scan-build results</h1>
+
+<table>
+<tr><th>User:</th><td>root@abb0100a6670</td></tr>
+<tr><th>Working Directory:</th><td>/rootdir</td></tr>
+<tr><th>Command Line:</th><td>make -j 3</td></tr>
+<tr><th>Clang Version:</th><td>clang version 10.0.0 (Fedora 10.0.0-2.fc32)
+</td></tr>
+<tr><th>Date:</th><td>Sun Jul 26 23:53:38 2020</td></tr>
+</table>
+<h2>Bug Summary</h2><table>
+<thead><tr><td>Bug Type</td><td>Quantity</td><td class="sorttable_nosort">Display?</td></tr></thead>
+<tr style="font-weight:bold"><td class="SUMM_DESC">All Bugs</td><td class="Q">53</td><td><center><input type="checkbox" id="AllBugsCheck" onClick="CopyCheckedStateToCheckButtons(this);" checked/></center></td></tr>
+<tr><th>Dead code</th><th colspan=2></th></tr>
+<tr><td class="SUMM_DESC">Unreachable code</td><td class="Q">8</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_dead_code_unreachable_code');" checked/></center></td></tr>
+<tr><th>Dead store</th><th colspan=2></th></tr>
+<tr><td class="SUMM_DESC">Dead assignment</td><td class="Q">23</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_dead_store_dead_assignment');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Dead increment</td><td class="Q">1</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_dead_store_dead_increment');" checked/></center></td></tr>
+<tr><th>Logic error</th><th colspan=2></th></tr>
+<tr><td class="SUMM_DESC">Cast from non-struct type to struct type</td><td class="Q">2</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_cast_from_non-struct_type_to_struct_type');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Cast region with wrong size</td><td class="Q">1</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_cast_region_with_wrong_size');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Dereference of null pointer</td><td class="Q">7</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_dereference_of_null_pointer');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Out-of-bound access</td><td class="Q">10</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_out-of-bound_access');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Out-of-bound array access</td><td class="Q">1</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_out-of-bound_array_access');" checked/></center></td></tr>
+</table>
+<h2>Reports</h2>
+
+<table class="sortable" style="table-layout:automatic">
+<thead><tr>
+  <td>Bug Group</td>
+  <td class="sorttable_sorted">Bug Type<span id="sorttable_sortfwdind">&nbsp;&#x25BE;</span></td>
+  <td>File</td>
+  <td>Function/Method</td>
+  <td class="Q">Line</td>
+  <td class="Q">Path Length</td>
+  <td class="sorttable_nosort"></td>
+  <!-- REPORTBUGCOL -->
+</tr></thead>
+<tbody>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>mate-submodules/libegg/eggsmclient-xsmp.c</td><td class="DESC">array_prop</td><td class="Q">1199</td><td class="Q">1</td><td><a href="report-fe77f7.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-fe77f7.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>mate-submodules/libegg/eggsmclient-xsmp.c</td><td class="DESC">ptrarray_prop</td><td class="Q">1232</td><td class="Q">1</td><td><a href="report-87f6e9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-87f6e9.html" -->
+</tr>
+<tr class="bt_logic_error_cast_region_with_wrong_size"><td class="DESC">Logic error</td><td class="DESC">Cast region with wrong size</td><td>libcaja-private/caja-file-operations.c</td><td class="DESC">init_common</td><td class="Q">962</td><td class="Q">2</td><td><a href="report-667351.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-667351.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/file-manager/fm-properties-window.c</td><td class="DESC">directory_contents_value_field_update</td><td class="Q">2237</td><td class="Q">1</td><td><a href="report-ba9d12.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-ba9d12.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/caja-query-editor.c</td><td class="DESC">modtime_row_add_to_query</td><td class="Q">1158</td><td class="Q">1</td><td><a href="report-782bbf.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-782bbf.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>libcaja-private/caja-file.c</td><td class="DESC">compare_by_emblems</td><td class="Q">3082</td><td class="Q">1</td><td><a href="report-e2bdc9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-e2bdc9.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>libcaja-private/caja-debug-log.c</td><td class="DESC">caja_debug_logv</td><td class="Q">229</td><td class="Q">1</td><td><a href="report-d617e9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-d617e9.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>libcaja-private/caja-file-operations.c</td><td class="DESC">verify_destination</td><td class="Q">2915</td><td class="Q">1</td><td><a href="report-8070c8.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-8070c8.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/file-manager/fm-properties-window.c</td><td class="DESC">create_permission_checkboxes</td><td class="Q">4547</td><td class="Q">1</td><td><a href="report-7bbb76.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-7bbb76.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>eel/eel-labeled-image.c</td><td class="DESC">labeled_image_update_alignments</td><td class="Q">1056</td><td class="Q">1</td><td><a href="report-625936.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-625936.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/caja-notebook.c</td><td class="DESC">caja_notebook_add_tab</td><td class="Q">395</td><td class="Q">1</td><td><a href="report-2fc0f5.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-2fc0f5.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>eel/eel-labeled-image.c</td><td class="DESC">labeled_image_update_alignments</td><td class="Q">1106</td><td class="Q">1</td><td><a href="report-13cb83.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-13cb83.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/caja-navigation-window.c</td><td class="DESC">caja_navigation_window_button_press_event</td><td class="Q">605</td><td class="Q">1</td><td><a href="report-4b0482.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-4b0482.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/file-manager/fm-properties-window.c</td><td class="DESC">create_simple_permissions</td><td class="Q">4486</td><td class="Q">1</td><td><a href="report-82526c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-82526c.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/file-manager/fm-directory-view.c</td><td class="DESC">reset_open_with_menu</td><td class="Q">4746</td><td class="Q">1</td><td><a href="report-12c7ea.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-12c7ea.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/caja-application.c</td><td class="DESC">caja_application_startup</td><td class="Q">2246</td><td class="Q">1</td><td><a href="report-360520.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-360520.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/caja-query-editor.c</td><td class="DESC">type_add_rows_from_query</td><td class="Q">1047</td><td class="Q">1</td><td><a href="report-ed5224.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-ed5224.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>libcaja-private/caja-file.c</td><td class="DESC">caja_file_get_start_stop_type</td><td class="Q">1195</td><td class="Q">1</td><td><a href="report-1f9ae7.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-1f9ae7.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/file-manager/fm-properties-window.c</td><td class="DESC">create_permission_checkboxes</td><td class="Q">4571</td><td class="Q">1</td><td><a href="report-92b625.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-92b625.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>eel/eel-labeled-image.c</td><td class="DESC">labeled_image_update_alignments</td><td class="Q">1105</td><td class="Q">1</td><td><a href="report-734122.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-734122.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>libcaja-private/caja-tree-view-drag-dest.c</td><td class="DESC">receive_uris</td><td class="Q">682</td><td class="Q">1</td><td><a href="report-ef9133.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-ef9133.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>eel/eel-labeled-image.c</td><td class="DESC">labeled_image_update_alignments</td><td class="Q">1057</td><td class="Q">1</td><td><a href="report-c02a87.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c02a87.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>libcaja-private/caja-mime-actions.c</td><td class="DESC">application_unhandled_uri</td><td class="Q">1608</td><td class="Q">1</td><td><a href="report-501936.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-501936.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>libcaja-private/caja-file-operations.c</td><td class="DESC">verify_destination</td><td class="Q">2978</td><td class="Q">1</td><td><a href="report-c63133.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c63133.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>libcaja-private/caja-file.c</td><td class="DESC">get_time</td><td class="Q">2788</td><td class="Q">1</td><td><a href="report-7a6a07.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-7a6a07.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>libcaja-private/caja-icon-dnd.c</td><td class="DESC">caja_icon_container_selection_items_local</td><td class="Q">627</td><td class="Q">1</td><td><a href="report-dea107.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-dea107.html" -->
+</tr>
+<tr class="bt_dead_store_dead_increment"><td class="DESC">Dead store</td><td class="DESC">Dead increment</td><td>libcaja-private/caja-icon-container.c</td><td class="DESC">lay_down_icons_horizontal</td><td class="Q">1530</td><td class="Q">1</td><td><a href="report-fe114a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-fe114a.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>src/caja-pathbar.c</td><td class="DESC">caja_path_bar_size_allocate</td><td class="Q">844</td><td class="Q">17</td><td><a href="report-4a0150.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-4a0150.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>libcaja-private/caja-extensions.c</td><td class="DESC">caja_extension_set_state</td><td class="Q">234</td><td class="Q">5</td><td><a href="report-520800.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-520800.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>libcaja-private/caja-extensions.c</td><td class="DESC">caja_extension_set_state</td><td class="Q">237</td><td class="Q">5</td><td><a href="report-d98083.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-d98083.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>eel/eel-canvas.c</td><td class="DESC">put_item_after</td><td class="Q">581</td><td class="Q">65</td><td><a href="report-eb82fc.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-eb82fc.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>src/caja-pathbar.c</td><td class="DESC">caja_path_bar_scroll_down</td><td class="Q">1091</td><td class="Q">24</td><td><a href="report-89c108.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-89c108.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>src/caja-window-manage-views.c</td><td class="DESC">display_view_selection_failure</td><td class="Q">2211</td><td class="Q">52</td><td><a href="report-25da23.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-25da23.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>eel/eel-canvas.c</td><td class="DESC">put_item_after</td><td class="Q">606</td><td class="Q">35</td><td><a href="report-00f471.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-00f471.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>eel/eel-canvas-rect-ellipse.c</td><td class="DESC">diff_rects_guts</td><td class="Q">824</td><td class="Q">16</td><td><a href="report-696789.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-696789.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>libcaja-private/caja-file.c</td><td class="DESC">caja_file_get_extension_as_string</td><td class="Q">3380</td><td class="Q">49</td><td><a href="report-cf1391.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-cf1391.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>eel/eel-canvas-rect-ellipse.c</td><td class="DESC">diff_rects_guts</td><td class="Q">828</td><td class="Q">18</td><td><a href="report-b440ef.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-b440ef.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>eel/eel-canvas-rect-ellipse.c</td><td class="DESC">diff_rects_guts</td><td class="Q">832</td><td class="Q">20</td><td><a href="report-c4e4b6.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c4e4b6.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>libcaja-private/caja-file.c</td><td class="DESC">compare_by_emblems</td><td class="Q">3085</td><td class="Q">6</td><td><a href="report-cd8577.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-cd8577.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>libcaja-private/caja-file.c</td><td class="DESC">fill_emblem_cache_if_needed</td><td class="Q">3067</td><td class="Q">11</td><td><a href="report-5f05eb.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-5f05eb.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>eel/eel-gdk-extensions.c</td><td class="DESC">eel_gradient_strip_trailing_direction_if_any</td><td class="Q">108</td><td class="Q">21</td><td><a href="report-024988.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-024988.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>eel/eel-vfs-extensions.c</td><td class="DESC">eel_filename_strip_extension</td><td class="Q">136</td><td class="Q">22</td><td><a href="report-ff204c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-ff204c.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>eel/eel-canvas-rect-ellipse.c</td><td class="DESC">diff_rects_guts</td><td class="Q">820</td><td class="Q">14</td><td><a href="report-e55616.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-e55616.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>eel/eel-vfs-extensions.c</td><td class="DESC">eel_filename_strip_extension</td><td class="Q">127</td><td class="Q">20</td><td><a href="report-466823.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-466823.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_array_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound array access</td><td>libcaja-private/caja-file.c</td><td class="DESC">fill_emblem_cache_if_needed</td><td class="Q">3062</td><td class="Q">14</td><td><a href="report-99a616.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-99a616.html" -->
+</tr>
+<tr class="bt_dead_code_unreachable_code"><td class="DESC">Dead code</td><td class="DESC">Unreachable code</td><td>test/test-eel-image-table.c</td><td class="DESC">image_table_size_allocate</td><td class="Q">196</td><td class="Q">1</td><td><a href="report-db45be.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-db45be.html" -->
+</tr>
+<tr class="bt_dead_code_unreachable_code"><td class="DESC">Dead code</td><td class="DESC">Unreachable code</td><td>libcaja-private/caja-vfs-file.c</td><td class="DESC">vfs_file_get_date</td><td class="Q">389</td><td class="Q">1</td><td><a href="report-4f5dc7.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-4f5dc7.html" -->
+</tr>
+<tr class="bt_dead_code_unreachable_code"><td class="DESC">Dead code</td><td class="DESC">Unreachable code</td><td>test/test-eel-labeled-image.c</td><td class="DESC">main</td><td class="Q">72</td><td class="Q">1</td><td><a href="report-e2052f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-e2052f.html" -->
+</tr>
+<tr class="bt_dead_code_unreachable_code"><td class="DESC">Dead code</td><td class="DESC">Unreachable code</td><td>libcaja-private/caja-file.c</td><td class="DESC">caja_file_get_boolean_metadata</td><td class="Q">3908</td><td class="Q">1</td><td><a href="report-a2a48b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-a2a48b.html" -->
+</tr>
+<tr class="bt_dead_code_unreachable_code"><td class="DESC">Dead code</td><td class="DESC">Unreachable code</td><td>libcaja-private/caja-file-operations.c</td><td class="DESC">caja_file_set_permissions_recursive</td><td class="Q">5831</td><td class="Q">1</td><td><a href="report-d962ad.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-d962ad.html" -->
+</tr>
+<tr class="bt_dead_code_unreachable_code"><td class="DESC">Dead code</td><td class="DESC">Unreachable code</td><td>libcaja-private/caja-icon-dnd.c</td><td class="DESC">drag_data_received_callback</td><td class="Q">1903</td><td class="Q">1</td><td><a href="report-0cae90.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-0cae90.html" -->
+</tr>
+<tr class="bt_dead_code_unreachable_code"><td class="DESC">Dead code</td><td class="DESC">Unreachable code</td><td>test/test-eel-image-table.c</td><td class="DESC">image_table_size_allocate</td><td class="Q">191</td><td class="Q">1</td><td><a href="report-b95fe2.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-b95fe2.html" -->
+</tr>
+<tr class="bt_dead_code_unreachable_code"><td class="DESC">Dead code</td><td class="DESC">Unreachable code</td><td>libcaja-private/caja-icon-container.c</td><td class="DESC">item_event_callback</td><td class="Q">6994</td><td class="Q">1</td><td><a href="report-a08fdb.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-a08fdb.html" -->
+</tr>
+</tbody>
+</table>
+
+</body></html>
